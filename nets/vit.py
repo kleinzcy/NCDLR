@@ -161,31 +161,6 @@ class Block(nn.Module):
         x = x + self.drop_path2(self.ls2(self.mlp(self.norm2(x))))
         return x
 
-
-class Normalize(nn.Module):
-
-    def __init__(self, power=2):
-        super(Normalize, self).__init__()
-        self.power = power
-
-    def forward(self, x):
-        norm = x.pow(self.power).sum(1, keepdim=True).pow(1. / self.power)
-        out = x.div(norm)
-        return out
-
-
-class NormedLinear(nn.Module):
-
-    def __init__(self, in_features, out_features):
-        super(NormedLinear, self).__init__()
-        self.weight = nn.Parameter(torch.Tensor(in_features, out_features))
-        self.weight.data.uniform_(-1, 1).renorm_(2, 1, 1e-5).mul_(1e5)
-
-    def forward(self, x):
-        out = F.normalize(x, dim=1).mm(F.normalize(self.weight, dim=0))
-        return out
-
-
 class ETF_Classifier(nn.Module):
     def __init__(self, feat_in, num_classes, fix_bn=False, LWS=False, reg_ETF=False):
         super(ETF_Classifier, self).__init__()
