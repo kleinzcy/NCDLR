@@ -38,6 +38,6 @@ random_head: True
 flag: 0
 num_classes: 683
 logit_adj_post: True
-representation_path: saved_models/ours/herb_005/best_model.pth
+representation_path: 
 est_k: False
 # error: -188

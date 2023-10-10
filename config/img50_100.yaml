@@ -44,7 +44,7 @@ logit_adj_post: True
 crt: False
 est_k: False
 error: 9
-representation_path: saved_models/ours/img_50_100_estimatek/latest_model.pth
+representation_path: 
 
 
 

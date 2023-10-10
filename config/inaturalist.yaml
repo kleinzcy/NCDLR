@@ -38,7 +38,7 @@ random_head: True
 flag: 0
 num_classes: 1000
 logit_adj_post: True
-representation_path: saved_models/ours/inaturalist18/best_model.pth
+representation_path: 
 est_k: False
 crt: False
 max_classes: 2000

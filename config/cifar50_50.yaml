@@ -43,6 +43,6 @@ val: False
 logit_adj_post: True
 crt: False
 # representation_path: saved_models/ours/cifar_50_50_estimatek/latest_model.pth
-representation_path: /public/home/xurj/my/ViT_NCD/saved_models/UNO/cifar_50_100_cos_pretrain/latest_model.pth
+representation_path: 
 est_k: False
 error: -30

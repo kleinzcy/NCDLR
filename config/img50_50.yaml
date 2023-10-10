@@ -42,5 +42,5 @@ flag: 0
 est_k: False
 error: 9
 logit_adj_post: True
-representation_path: saved_models/ours/img_50_50_estimatek/latest_model.pth
+representation_path: 
 val: False
