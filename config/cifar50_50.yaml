@@ -1,12 +1,10 @@
 algorithm: ours
 save_dir: ./saved_models/ours/
-save_name: cifar_50_50_estimatek
+save_name: cifar_50_50
 resume: False
-load_path: ./saved_models/UNO/UNO_cifar100_50_100_Ours_w/latest_model.pth
+load_path: 
 num_outer_iters: 10
 lr_w: 0.1
-confidence: 0
-set_imb: 1
 lab_imbalance_factor: 50
 imbalance_factor: 50
 gamma: 500
@@ -36,7 +34,6 @@ multiprocessing_distributed: False
 use_pretrain: True
 gpu: "0"
 pretrain_path: /public/home/zhangchy2/workdir/pretrained/dino/dino_vitbase16_pretrain.pth
-cosine_classifier: 4
 num_iters_sk: 3
 epsilon_sk: 0.05
 temperature: 0.1
@@ -47,5 +44,5 @@ logit_adj_post: True
 crt: False
 # representation_path: saved_models/ours/cifar_50_50_estimatek/latest_model.pth
 representation_path: /public/home/xurj/my/ViT_NCD/saved_models/UNO/cifar_50_100_cos_pretrain/latest_model.pth
-est_k: True
+est_k: False
 error: -30

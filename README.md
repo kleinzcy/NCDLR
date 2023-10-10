@@ -76,11 +76,11 @@ We thank the code provided by https://github.com/sgvaze/generalized-category-dis
 If you find our work is useful, please cite our paper:
 
 ```
-@InProceedings{chuyu2023novel,
-    author    = {Chuyu Zhang, Ruijie Xu, Xuming He},
-    title     = {Novel Class Discovery for Long-tailed Recognition},
-    booktitle = {Transactions on Machine Learning Research (TMLR2023)},
-    year      = {2023}
+@article{zhang2023novel,
+  title={Novel Class Discovery for Long-tailed Recognition},
+  author={Zhang, Chuyu and Xu, Ruijie and He, Xuming},
+  journal={Transactions on Machine Learning Research},
+  year={2023}
 }
 ```
 

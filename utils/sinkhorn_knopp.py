@@ -54,7 +54,7 @@ class Imbalanced_SinkhornKnopp(torch.nn.Module):
         self.order = None
         self.w0 = torch.ones(1, self.num_cluster) / self.num_cluster
         self.w0 = self.w0.cuda()
-        # due to sigmoid, when set imb is 1, we set learn_k as 5.
+        # due to sigmoid, we set learn_k as 5.
         self.learn_k = torch.nn.Parameter(torch.ones(1) * 5)
         self.w = torch.tensor([n / (self.num_cluster - 1) for n in range(self.num_cluster)], requires_grad=True).cuda().reshape(1, -1)
 
@@ -67,7 +67,7 @@ class Imbalanced_SinkhornKnopp(torch.nn.Module):
 
         memory_logits = memory_logits - memory_logits.max()
         Q = torch.exp(memory_logits / self.epsilon).t()
-        assert torch.sum(torch.isnan(Q)) > 0, "There is nan value in Q."
+        assert torch.sum(torch.isnan(Q)) == 0, "There is nan value in Q."
 
         K = torch.softmax(self.w * torch.log(torch.sigmoid(self.learn_k)), dim=1)
         B = Q.shape[1]
@@ -85,7 +85,7 @@ class Imbalanced_SinkhornKnopp(torch.nn.Module):
             q_sum = torch.sum(Q, dim=0, keepdim=True)
             Q /= q_sum
             Q /= B
-            assert torch.sum(torch.isnan(Q)) > 0, "There is nan value in Q."
+            assert torch.sum(torch.isnan(Q)) == 0, "There is nan value in Q."
 
         Q *= B
         # reorder
@@ -111,7 +111,7 @@ class Balanced_sinkhorn(torch.nn.Module):
         self.opt = torch.optim.SGD(params=self.sk.parameters(), lr=args.lr_w, momentum=0.99)
         self.kl_loss = nn.KLDivLoss(reduction="batchmean")
 
-    def forward(self, logits, args, num_cluster=50, epoch=10, SK_memory=None, labels=None):
+    def forward(self, logits, args, SK_memory=None, labels=None):
         is_update = True
 
         for _ in range(args.num_outer_iters):

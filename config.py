@@ -13,5 +13,5 @@ iNaturalist18 = "/storage/data/zhangchy2/ncd_data/NCD/iNature2018"
 # -----------------
 # OTHER PATHS
 # -----------------
-dino_pretrain_path = '/public/home/zhangchy2/workdir/pretrained/dino/dino_vitbase16_pretrain.pth'
+dino_pretrain_path = '/storage/data/zhangchy2/ncd_data/pretrained/dino_vitbase16_pretrain.pth'
 

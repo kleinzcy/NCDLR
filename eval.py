@@ -65,29 +65,16 @@ def get_config():
     parser.add_argument('--img_size', type=int, default=32)
     parser.add_argument('--crop_ratio', type=float, default=0.875)
 
-    parser.add_argument('--topk', default=5, type=int)
-    parser.add_argument('--rampup_length', default=150, type=int)
-    parser.add_argument('--rampup_coefficient', type=float, default=50)
-    parser.add_argument('--step_size', default=160, type=int)
     parser.add_argument('--gamma', type=float, default=0.1)
     parser.add_argument("--project", default="MIv2", type=str, help="wandb project")
     parser.add_argument("--entity", default="rikkixu", type=str, help="wandb entity")
     parser.add_argument("--offline", default=True, action="store_true", help="disable wandb")
 
-    parser.add_argument('--bce_type', type=str, default='cos')
-    parser.add_argument('--hard_negative_start', default=3, type=int)
     parser.add_argument('--knn', default=-1, type=int)
-    parser.add_argument('--w_ncl_la', type=float, default=0.1)
-    parser.add_argument('--w_ncl_ulb', type=float, default=1.0)
-    parser.add_argument('--costhre', type=float, default=0.95)
     parser.add_argument('--m_size', default=2000, type=int)
     parser.add_argument('--m_t', type=float, default=0.05)
     parser.add_argument('--w_pos', type=float, default=0.2)
-    parser.add_argument('--hard_iter', type=int, default=5)
-    parser.add_argument('--num_hard', type=int, default=400)
-    parser.add_argument("--multicrop", default=False, action="store_true", help="activates multicrop")
     parser.add_argument("--num_large_crops", default=2, type=int, help="number of large crops")
-    parser.add_argument("--num_small_crops", default=2, type=int, help="number of small crops")
     parser.add_argument('--increment_coefficient', type=float, default=0.05)
 
     # config file
@@ -100,9 +87,7 @@ def get_config():
     args.device = torch.device("cuda" if args.cuda else "cpu")
     over_write_args_from_file(args, args.c)
 
-    if not args.multicrop:
-        args.num_small_crops = 0
-    args.num_crops = args.num_large_crops + args.num_small_crops
+    args.num_crops = args.num_large_crops
     return args
 
 
@@ -158,7 +143,7 @@ def main_worker(gpu, args):
 
     model = _net_builder(num_classes=100, num_unseen_classes=args.num_unlabeled_classes,
                          num_seen_classes=args.num_labeled_classes, pretrained=args.use_pretrain,
-                         pretrained_path=args.pretrain_path, cosine_classifier=args.cosine_classifier)
+                         pretrained_path=args.pretrain_path)
 
     model = init_params(model, random_head=args.random_head)
     model_statistics(model)

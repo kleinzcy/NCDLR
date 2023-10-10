@@ -48,7 +48,7 @@ def main(args):
 
     model = _net_builder(num_classes=100, num_unseen_classes=args.num_unlabeled_classes,
                          num_seen_classes=args.num_labeled_classes, pretrained=args.use_pretrain,
-                         pretrained_path=args.pretrain_path,  cosine_classifier=args.cosine_classifier)
+                         pretrained_path=args.pretrain_path)
 
 
     for m in model.parameters():
@@ -278,7 +278,6 @@ def get_config():
     parser.add_argument('--seed', default=1, type=int,
                         help='seed for initializing training. ')
 
-    parser.add_argument("--arch", default="resnet18", type=str, help="backbone architecture")
     parser.add_argument("--proj_dim", default=256, type=int, help="projected dim")
     parser.add_argument("--hidden_dim", default=2048, type=int, help="hidden dim in proj/pred head")
     parser.add_argument("--overcluster_factor", default=1, type=int, help="overclustering factor")
@@ -293,10 +292,7 @@ def get_config():
     parser.add_argument("--num_labeled_classes", default=50, type=int, help="number of labeled classes")
     parser.add_argument("--num_unlabeled_classes", default=50, type=int, help="number of unlab classes")
     parser.add_argument("--pretrain_path", type=str, help="pretrained checkpoint path")
-    parser.add_argument("--multicrop", default=False, action="store_true", help="activates multicrop")
     parser.add_argument("--num_large_crops", default=2, type=int, help="number of large crops")
-    parser.add_argument("--num_small_crops", default=2, type=int, help="number of small crops")
-
     parser.add_argument("--ss_pretrained", default=False, action="store_true", help="self-supervised pretrain")
     parser.add_argument("--gpu", type=int, default=0, help="the gpu")
     parser.add_argument("--ratio", type=float, default=50, help="the percentage of labeled data")
@@ -326,19 +322,10 @@ def get_config():
                         action="store_true",
                         help="")
 
-    parser.add_argument("--cosine_classifier",
-                        type=int,
-                        help="")
-
     parser.add_argument("--lr_w",
                         type=float,
                         help="")
-    parser.add_argument("--confidence",
-                        type=float,
-                        help="")
-    parser.add_argument("--set_imb",
-                        type=int,
-                        help="")
+
     parser.add_argument("--gamma", type=float)
     parser.add_argument("--num_outer_iters",
                         type=int,
@@ -363,9 +350,7 @@ def get_config():
     args.device = torch.device("cuda" if args.cuda else "cpu")
     over_write_args_from_file(args, args.c)
     args.num_classes = args.num_labeled_classes + args.num_unlabeled_classes
-    if not args.multicrop:
-        args.num_small_crops = 0
-    args.num_crops = args.num_large_crops + args.num_small_crops
+    args.num_crops = args.num_large_crops
     return args
 
 

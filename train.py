@@ -181,18 +181,15 @@ def train(args, best_scores, model, SK_memory, SK_memory_bar,
         targets_u = balanced_sinkhorn(
             logits=logits[~mask_lb, args.num_labeled_classes:].clone().detach(),
             args=args,
-            num_cluster=args.num_unlabeled_classes,
             SK_memory=SK_memory,
-            labels=labels[~mask_lb].float(),
-            epoch=epoch).detach()
+            labels=labels[~mask_lb].float()).detach()
+        
         targets_ubar = balanced_sinkhorn(
             logits=logits_bar[~mask_lb,
                    args.num_labeled_classes:].clone().detach(),
             args=args,
-            num_cluster=args.num_unlabeled_classes,
             SK_memory=SK_memory_bar,
-            labels=labels[~mask_lb].float(),
-            epoch=epoch).detach()
+            labels=labels[~mask_lb].float()).detach()
 
         loss_ce = mse(prob[mask_lb], targets_lab) + mse(prob_bar[mask_lb], targets_lab)
         loss_u_ce = mse(prob[~mask_lb, args.num_labeled_classes:], targets_ubar) + mse(prob_bar[~mask_lb, args.num_labeled_classes:], targets_u)
@@ -331,18 +328,13 @@ def get_config():
                         default=50,
                         type=int,
                         help="warmup epochs")
-    parser.add_argument('--net', type=str, default='vit_small_patch2_32')
+    parser.add_argument('--net', type=str, default='vit_base_patch16_224')
     parser.add_argument('--net_from_name', action="store_true", default=False)
     parser.add_argument('--use_pretrain', default=True, action='store_true')
     parser.add_argument('--seed',
                         default=1,
                         type=int,
                         help='seed for initializing training. ')
-
-    parser.add_argument("--arch",
-                        default="resnet18",
-                        type=str,
-                        help="backbone architecture")
     parser.add_argument("--proj_dim",
                         default=256,
                         type=int,
@@ -398,18 +390,10 @@ def get_config():
     parser.add_argument("--pretrain_path",
                         type=str,
                         help="pretrained checkpoint path")
-    parser.add_argument("--multicrop",
-                        default=False,
-                        action="store_true",
-                        help="activates multicrop")
     parser.add_argument("--num_large_crops",
                         default=2,
                         type=int,
                         help="number of large crops")
-    parser.add_argument("--num_small_crops",
-                        default=2,
-                        type=int,
-                        help="number of small crops")
 
     parser.add_argument("--ss_pretrained",
                         default=False,
@@ -450,11 +434,7 @@ def get_config():
                         action="store_true",
                         help="")
 
-    parser.add_argument("--cosine_classifier", type=int, help="")
-
     parser.add_argument("--lr_w", type=float, help="")
-    parser.add_argument("--confidence", type=float, help="")
-    parser.add_argument("--set_imb", type=int, help="")
     parser.add_argument("--gamma", type=float)
     parser.add_argument("--num_outer_iters", type=int, help="")
     parser.add_argument("--flag", type=int, default=0, help="")
@@ -471,9 +451,7 @@ def get_config():
     args.device = torch.device("cuda" if args.cuda else "cpu")
     over_write_args_from_file(args, args.c)
 
-    if not args.multicrop:
-        args.num_small_crops = 0
-    args.num_crops = args.num_large_crops + args.num_small_crops
+    args.num_crops = args.num_large_crops
     return args
 
 

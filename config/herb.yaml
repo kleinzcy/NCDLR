@@ -3,11 +3,9 @@ save_dir: ./saved_models/ours/
 save_name: herb_001
 num_outer_iters: 10
 lr_w: 0.1
-confidence: 0
-set_imb: 1
 gamma: 500
 resume: False
-load_path: ./saved_models/UNO/UNO_herbarium_19_ETF_seed1/latest_model.pth
+load_path: 
 overwrite: True
 max_epochs: 70
 batch_size: 128
@@ -33,7 +31,6 @@ multiprocessing_distributed: False
 use_pretrain: True
 gpu: 0
 pretrain_path: /public/home/zhangchy2/workdir/pretrained/dino/dino_vitbase16_pretrain.pth
-cosine_classifier: 4
 num_iters_sk: 3
 epsilon_sk: 0.01
 temperature: 0.1

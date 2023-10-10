@@ -1,15 +1,13 @@
 algorithm: ours
 save_dir: ./saved_models/ours/
-save_name: img_50_50_estimatek
+save_name: img_50_50
 num_outer_iters: 50
 lr_w: 0.1
-confidence: 0
-set_imb: 1
 lab_imbalance_factor: 50
 imbalance_factor: 50
 gamma: 500
 resume: False
-load_path: ./saved_models/UNO//UNO_image100_50_50_100_1_memory/latest_model.pth
+load_path: 
 overwrite: True
 max_epochs: 50
 batch_size: 128
@@ -36,14 +34,12 @@ multiprocessing_distributed: False
 use_pretrain: True
 gpu: 0
 pretrain_path: /public/home/zhangchy2/workdir/pretrained/dino/dino_vitbase16_pretrain.pth
-topk: 5
-cosine_classifier: 4
 num_iters_sk: 3
 epsilon_sk: 0.05
 temperature: 0.1
 random_head: True
 flag: 0
-est_k: True
+est_k: False
 error: 9
 logit_adj_post: True
 representation_path: saved_models/ours/img_50_50_estimatek/latest_model.pth
