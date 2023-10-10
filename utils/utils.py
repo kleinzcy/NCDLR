@@ -1,9 +1,3 @@
-# _*_ coding: utf-8 _*_
-"""
-Time:     2022/9/26 12:17
-Author:   Ruijie Xu
-File:     utils.py
-"""
 from scipy.optimize import linear_sum_assignment
 from sklearn import metrics
 import numpy as np

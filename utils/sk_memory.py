@@ -1,9 +1,3 @@
-# _*_ coding: utf-8 _*_
-"""
-Time:     2022/10/18 13:10
-Author:   Ruijie Xu
-File:     sk_memory.py
-"""
 import torch
 from torch import nn
 import math

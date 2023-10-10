@@ -8,7 +8,7 @@ import torch
 import torch.nn.parallel
 import torch.backends.cudnn as cudnn
 
-from utils import get_net_builder, get_logger, get_port, over_write_args_from_file, ramps, AverageMeter, init_params, \
+from utils import get_net_builder, get_logger, get_port, over_write_args_from_file, AverageMeter, init_params, \
     model_statistics
 from data.get_dataset import get_discover_datasets
 

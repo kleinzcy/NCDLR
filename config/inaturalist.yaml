@@ -7,7 +7,7 @@ gamma: 500
 resume: False
 load_path: 
 overwrite: True
-max_epochs: 70
+max_epochs: 50
 batch_size: 128
 num_labeled_classes: 500
 num_unlabeled_classes: 500

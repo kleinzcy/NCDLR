@@ -1,10 +1,3 @@
-# coding:utf-8
-# Author : klein
-# CONTACT: zhangchy2@shanghaitech.edu.cn
-# SOFTWARE: PyCharm
-# FILE : Imagenet100.py
-# DATE : 2022/8/28 13:00
-
 # 1. Generate data split
 # 2. Supervised Pretrain dataloader
 # 3. Discovery dataloader

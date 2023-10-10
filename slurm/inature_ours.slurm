@@ -15,5 +15,5 @@ cd /public/home/zhangchy2/workdir/Project/TMLR2023/code
 source activate uno
 # CUDA_VISIBLE_DEVICES=0 python train.py --c config/ours/inaturalist.yaml
 # CUDA_VISIBLE_DEVICES=0 python LA.py --c config/ours/inaturalist.yaml
-CUDA_VISIBLE_DEVICES=0 python train.py --c config/ours/inaturalist2k.yaml
+CUDA_VISIBLE_DEVICES=0 python train.py --c config/inaturalist2k.yaml
 # CUDA_VISIBLE_DEVICES=0 python LA.py --c config/ours/inaturalist2k.yaml

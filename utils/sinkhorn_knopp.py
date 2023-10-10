@@ -1,10 +1,3 @@
-# coding:utf-8
-# Author : klein
-# CONTACT: zhangchy2@shanghaitech.edu.cn
-# SOFTWARE: PyCharm
-# FILE : sinkhorn_knopp.py
-# DATE : 2022/8/27 17:11
-# from ast import Return
 from cmath import log
 import torch
 import torch.nn.functional as F

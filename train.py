@@ -6,7 +6,7 @@ import numpy as np
 import torch
 import torch.nn.parallel
 import torch.backends.cudnn as cudnn
-from utils import get_net_builder, get_logger, get_port, over_write_args_from_file, ramps, AverageMeter, init_params
+from utils import get_net_builder, get_logger, get_port, over_write_args_from_file, AverageMeter, init_params
 from data.get_dataset import get_discover_datasets
 from utils.utils import split_cluster_acc_v2, cluster_acc, split_cluster_acc_v2_class
 from tqdm import tqdm

@@ -1,9 +1,3 @@
-# coding:utf-8
-# Author : klein
-# CONTACT: zhangchy2@shanghaitech.edu.cn
-# SOFTWARE: PyCharm
-# FILE : utils.py
-# DATE : 2022/8/27 17:16
 import torch.utils.data as data
 from PIL import Image
 

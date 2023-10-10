@@ -1,14 +1,6 @@
-# coding:utf-8
-# Author : klein
-# CONTACT: zhangchy2@shanghaitech.edu.cn
-# SOFTWARE: PyCharm
-# FILE : get_dataset.py
-# DATE : 2022/8/27 17:14
 from data.utils import DiscoverDataset, TransformTwice
 from data.cifar import get_cifar_datasets
-#from data.StanfordCars import get_stanford_datasets
 from data.Imagenet100 import get_imagenet100_datasets
-# from data.place365 import get_Place365_datasets
 from data.herbarium import get_herbarium_datasets
 from data.inature import get_inaturelist18_datasets
 import functools
