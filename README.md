@@ -88,9 +88,12 @@ If you find our work is useful, please cite our paper:
 And you can also check other work in our group.
 
 ```
-@InProceedings{peiyan2023class,
-    author    = {Peiyan Gu, Chuyu Zhang, Ruijie Xu,Xuming He},
+@InProceedings{Gu_2023_ICCV,
+    author    = {Gu, Peiyan and Zhang, Chuyu and Xu, Ruijie and He, Xuming},
     title     = {Class-relation Knowledge Distillation for Novel Class Discovery},
     booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
-    year      = {2023}
+    month     = {October},
+    year      = {2023},
+    pages     = {16474-16483}
 }
+```
